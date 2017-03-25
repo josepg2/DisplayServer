@@ -3,16 +3,101 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <style>
+
+    html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  background-color: pink;
+  overflow: hidden;
+}
+
+    .right-col {
+  -webkit-transition:width .8s ease;
+  -moz-transition:width .8s ease;
+  -ms-transition:width .8s ease;
+  -o-transition:width .8s ease;
+  transition:width .8s ease;
+
+  width:0%; /* width as the % value */
+}
+
+.green-col {
+  -webkit-transition:width .8s ease;
+  -moz-transition:width .8s ease;
+  -ms-transition:width .8s ease;
+  -o-transition:width .8s ease;
+  transition:width .8s ease;
+
+  width:0%; /* width as the % value */
+}
+
+.main-col {
+  -webkit-transition:margin-right .8s ease;
+  -moz-transition:margin-right .8s ease;
+  -ms-transition:margin-right .8s ease;
+  -o-transition:margin-right .8s ease;
+  transition:margin-right .8s ease;
+
+  margin-right:0%; /* width as the % value */
+}
+
+.expanded {
+  width:40% !important; /* !important because min-width is stronger than width */
+}
+.reducemain {
+margin-right: 40% !important;
+}
+
+
+/* boring things */
+.main {   position:absolute;  height:100%; width: 100%; background: #f0e68c; }
+.main-col { margin-right:0px; height:inherit;; outline:1px solid lime; }
+.right-col { background:pink; position:absolute; right:0; top:0; bottom:0; }
+.green-col { background:green; position:absolute; right:0; top:0; bottom:0; }
+    </style>
   </head>
   <body>
+
+    <!--
+    <div style="backgroun-color:red">
+
     <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
+    All of the Node.js APIs are available in this renderer process.
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+
+    </div>
+
+    <div ng-app="">
+
+      <p>Input something in the input box:</p>
+      <p>Name: <input type="text" ng-model="name"></p>
+      <p ng-bind="name"></p>
+
+    </div>
+  -->
+
+
+
+<div class="main">
+  <div class="main-col">
+    <button id="toggle">toggle transition</button>
+    <button id="addnew">add new</button>
+  </div>
+  <div class="right-col"></div>
+  <div class="green-col"></div>
+
+
+</div>
   </body>
 
   <script>
+    $ = jQuery = require('jquery');
+    require('angular');
     // You can also require other files to run in this process
     require('./renderer.js')
   </script>
