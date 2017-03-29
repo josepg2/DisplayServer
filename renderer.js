@@ -29,7 +29,7 @@ $('#addnew').click(function(){
 
 });
 
-angular.module('DisplayServer', []);
+angular.module('DisplayServer', ['ngAnimate']);
 
 angular.module('DisplayServer')
   .controller('Ctrl', function ($scope) {

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script>
       $ = jQuery = require('jquery');
       require('angular');
       // You can also require other files to run in this process
       require('./renderer.js')
     </script>
+    <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
     <style>
 
     html {
@@ -20,6 +22,21 @@ body {
   background-color: pink;
   overflow: hidden;
 }
+
+body{
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+  background: #2980b9 url('./tumblr_static_bg3.png') repeat 0 0;
+	-webkit-animation: 20s linear 0s normal none infinite animatebackground;
+}
+
+@-webkit-keyframes animatebackground {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
 
     .right-col {
   -webkit-transition:width .8s ease;
@@ -83,54 +100,61 @@ input{
 
 /* Ripple magic */
 .button{
-  height : 40px;
+  height : 150px;
   position: relative;
   overflow: hidden;
 }
 
-.button:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, .5);
-  opacity: 0;
-  border-radius: 0%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
+.ng-enter,
+.ng-enter-active{
+  -webkit-animation: enter 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+    animation: enter 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+	display: block;
+    position: relative;
 }
 
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 1;
-  }
-  8% {
-    transform: scale(400, 400);
-    opacity: .5;
-  }
-  20% {
-    transform: scale(0, 0);
-    opacity: 1;
-  }
-  40% {
-    transform: scale(400, 400);
-    opacity: .5;
-  }
-  65% {
-    transform: scale(0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(400, 400);
-    opacity: 0;
-  }
+@-webkit-keyframes enter {
+	from {
+	    opacity: 0;
+    	height: 0px;
+    }
+    20% {
+		opacity: .5;
+    }
+    40% {
+		opacity: .15;     	    }
+    60% {
+		opacity: .75;
+    }
+    80% {
+		opacity: .3;
+    }
+    to {
+        opacity: 1;
+    	height: 150px;
+    }
 }
-
-.button::after {
-  animation: ripple 10s ease-out;
+@keyframes enter {
+	from {
+	    opacity: 0;
+    	height: 0px;
+    }
+    20% {
+		opacity: .5;
+    }
+    40% {
+		opacity: .15;
+		}
+    60% {
+		opacity: .75;
+    }
+    80% {
+		opacity: .3;
+    }
+    to {
+        opacity: 1;
+    	height: 150px;
+    }
 }
     </style>
   </head>
@@ -169,12 +193,13 @@ input{
 </div>
 -->
 <div ng-controller="Ctrl">
+   <input type="button" ng-click="addItem()" value="Add Item" /><br/>
+   <i>Should add the item to the first index or 0 index.</i>
     <pre>{{data}}</pre><br/><br/>
     <div class="button" ng-repeat="n in data">
     {{n}}
     </div>
-    <input type="button" ng-click="addItem()" value="Add Item" /><br/>
-    <i>Should add the item to the first index or 0 index.</i>
+
 </div>
   </body>
 
