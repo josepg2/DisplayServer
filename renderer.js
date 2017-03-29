@@ -28,3 +28,19 @@ $('#addnew').click(function(){
   }
 
 });
+
+angular.module('DisplayServer', []);
+
+angular.module('DisplayServer')
+  .controller('Ctrl', function ($scope) {
+
+    $scope.data = [
+    new String('Item 4'), new String('Item 3'), new String('Item 2'), new String('Item 1')];
+
+    $scope.addItem = function () {
+        var c = $scope.data.length + 1;
+        var item = new String('Item ' + c)
+        $scope.data.splice(0, 0, item);
+    };
+
+  });

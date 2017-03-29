@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="DisplayServer">
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      $ = jQuery = require('jquery');
+      require('angular');
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
     <style>
 
     html {
@@ -57,6 +64,74 @@ margin-right: 40% !important;
 .main-col { margin-right:0px; height:inherit;; outline:1px solid lime; }
 .right-col { background:pink; position:absolute; right:0; top:0; bottom:0; }
 .green-col { background:green; position:absolute; right:0; top:0; bottom:0; }
+
+input{
+    padding:5px;
+}
+
+/* Material style */
+.button {
+  border: none;
+  cursor: pointer;
+  color: black;
+  padding: 15px 40px;
+  border-radius: 2px;
+  font-size: 22px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+  background: #3BCCDC;
+}
+
+/* Ripple magic */
+.button{
+  height : 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 0%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  8% {
+    transform: scale(400, 400);
+    opacity: .5;
+  }
+  20% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(400, 400);
+    opacity: .5;
+  }
+  65% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(400, 400);
+    opacity: 0;
+  }
+}
+
+.button::after {
+  animation: ripple 10s ease-out;
+}
     </style>
   </head>
   <body>
@@ -79,7 +154,6 @@ margin-right: 40% !important;
       <p ng-bind="name"></p>
 
     </div>
-  -->
 
 
 
@@ -93,12 +167,16 @@ margin-right: 40% !important;
 
 
 </div>
+-->
+<div ng-controller="Ctrl">
+    <pre>{{data}}</pre><br/><br/>
+    <div class="button" ng-repeat="n in data">
+    {{n}}
+    </div>
+    <input type="button" ng-click="addItem()" value="Add Item" /><br/>
+    <i>Should add the item to the first index or 0 index.</i>
+</div>
   </body>
 
-  <script>
-    $ = jQuery = require('jquery');
-    require('angular');
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+
 </html>
