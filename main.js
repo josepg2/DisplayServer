@@ -3,6 +3,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+var OmxManager = require('omx-manager');
 
 const path = require('path')
 const url = require('url')
@@ -15,7 +16,7 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
-  mainWindow.setFullScreen(true)
+  //mainWindow.setFullScreen(true)
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -35,7 +36,25 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+
+  setTimeout(function() {
+var manager = new OmxManager(); // OmxManager 
+manager.setVideosDirectory('/home/pi/Electron/DisplayServer/Videos');
+  var camera = manager.create(['small.mp4', 'small2.mp4'],
+ {
+ '--loop': true,
+ '-o': 'hdmi',
+ '--win' : "1330 540 1920 1080"
+
 }
+
+);
+  camera.play();
+
+	}, 3000)
+  
+};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
