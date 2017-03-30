@@ -1,139 +1,185 @@
 <!DOCTYPE html>
 <html ng-app="DisplayServer">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script>
-      $ = jQuery = require('jquery');
-      require('angular');
-      // You can also require other files to run in this process
-      require('./renderer.js')
+        $ = jQuery = require('jquery');
+        require('angular');
+        // You can also require other files to run in this process
+        require('./renderer.js')
     </script>
     <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/html5-marquee/css/marquee.css">
     <style>
+        html {
+            height: 100%;
+        }
 
-    html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-  background-color: pink;
-  overflow: hidden;
-}
+        body {
+            min-height: 100%;
+            background-color: pink;
+            overflow: hidden;
+        }
 
-body{
-	margin:0;
-	padding:0;
-	font-family:"arial",heletica,sans-serif;
-	font-size:12px;
-  background: #2980b9 url('./tumblr_static_bg3.png') repeat 0 0;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "arial", heletica, sans-serif;
+            font-size: 12px;
+            background: #2980b9 url('./tumblr_static_bg3.png') repeat 0 0;
+        }
 
-@-webkit-keyframes animatebackground {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
-
-
-    .right-col {
-  -webkit-transition:width .8s ease;
-  -moz-transition:width .8s ease;
-  -ms-transition:width .8s ease;
-  -o-transition:width .8s ease;
-  transition:width .8s ease;
-
-  width:0%; /* width as the % value */
-}
-
-.green-col {
-  -webkit-transition:width .8s ease;
-  -moz-transition:width .8s ease;
-  -ms-transition:width .8s ease;
-  -o-transition:width .8s ease;
-  transition:width .8s ease;
-
-  width:0%; /* width as the % value */
-}
-
-.main-col {
-  -webkit-transition:margin-right .8s ease;
-  -moz-transition:margin-right .8s ease;
-  -ms-transition:margin-right .8s ease;
-  -o-transition:margin-right .8s ease;
-  transition:margin-right .8s ease;
-
-  margin-right:0%; /* width as the % value */
-}
-
-.expanded {
-  width:40% !important; /* !important because min-width is stronger than width */
-}
-.reducemain {
-margin-right: 40% !important;
-}
+        @-webkit-keyframes animatebackground {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 500px 0;
+            }
+        }
 
 
-/* boring things */
-.main {   position:absolute;  height:100%; width: 100%; background: #f0e68c; }
-.main-col { margin-right:0px; height:inherit;; outline:1px solid lime; }
-.right-col { background:pink; position:absolute; right:0; top:0; bottom:0; }
-.green-col { background:green; position:absolute; right:0; top:0; bottom:0; }
+        .right-col {
+            -webkit-transition: width .8s ease;
+            -moz-transition: width .8s ease;
+            -ms-transition: width .8s ease;
+            -o-transition: width .8s ease;
+            transition: width .8s ease;
 
-input{
-    padding:5px;
-}
+            width: 0%;
+            /* width as the % value */
+        }
 
-/* Material style */
-.button {
-  border: none;
-  cursor: pointer;
-  color: white;
-  padding: 15px 40px;
-  border-radius: 2px;
-  font-size: 60px;
-  background: #3BCCDC;
-  opacity: 0.5;  
-}
+        .green-col {
+            -webkit-transition: width .8s ease;
+            -moz-transition: width .8s ease;
+            -ms-transition: width .8s ease;
+            -o-transition: width .8s ease;
+            transition: width .8s ease;
 
-/* Ripple magic */
-.button{
-  height : 150px;
-  position: relative;
-  overflow: hidden;
-}
+            width: 0%;
+            /* width as the % value */
+        }
 
-.ng-enter,
-.ng-enter-active{
-  -webkit-animation: enter 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    animation: enter 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-	display: block;
-    position: relative;
-}
+        .main-col {
+            -webkit-transition: margin-right .8s ease;
+            -moz-transition: margin-right .8s ease;
+            -ms-transition: margin-right .8s ease;
+            -o-transition: margin-right .8s ease;
+            transition: margin-right .8s ease;
 
-@-webkit-keyframes enter {
-	from {
-	opacity: 0;
-    	height: 0px;
-    to {
-        opacity: 1;
-    	height: 150px;
-    }
-}
-@keyframes enter {
-	from {
-	    opacity: 0;
-    	height: 0px;
-    }
-    to {
-        opacity: 0.5;
-    	height: 150px;
-    }
-}
+            margin-right: 0%;
+            /* width as the % value */
+        }
+
+        .expanded {
+            width: 40% !important;
+            /* !important because min-width is stronger than width */
+        }
+
+        .reducemain {
+            margin-right: 40% !important;
+        }
+        /* boring things */
+
+        .main {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: #f0e68c;
+        }
+
+        .main-col {
+            margin-right: 0px;
+            height: inherit;
+            ;
+            outline: 1px solid lime;
+        }
+
+        .right-col {
+            background: pink;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .green-col {
+            background: green;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        input {
+            padding: 5px;
+        }
+        /* Material style */
+
+        .button {
+            border: none;
+            cursor: pointer;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 2px;
+            font-size: 60px;
+            background: #3BCCDC;
+            opacity: 0.5;
+        }
+        /* Ripple magic */
+
+        .button {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ng-enter,
+        .ng-enter-active {
+            -webkit-animation: enter 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+            animation: enter 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+            display: block;
+            position: relative;
+        }
+
+        @-webkit-keyframes enter {
+            from {
+                opacity: 0;
+                height: 0px;
+            }
+            to {
+                opacity: 1;
+                height: 150px;
+            }
+        }
+
+        @keyframes enter {
+            from {
+                opacity: 0;
+                height: 0px;
+            }
+            to {
+                opacity: 0.5;
+                height: 150px;
+            }
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            font-size: 40px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <!--
     <div style="backgroun-color:red">
@@ -167,16 +213,17 @@ input{
 
 </div>
 -->
-<div ng-controller="Ctrl">
-   <input type="button" ng-click="addItem()" value="Add Item" /><br/>
-   <i>Should add the item to the first index or 0 index.</i>
-    <pre>{{data}}</pre><br/><br/>
-    <div class="button" ng-repeat="n in data">
-    {{n}}
-    </div>
+    <div ng-controller="Ctrl">
+        <input type="button" ng-click="addItem()" value="Add Item" /><br/>
+        <i>Should add the item to the first index or 0 index.</i>
+        <pre>{{data}}</pre><br/><br/>
+        <div class="button" ng-repeat="n in data">
+            {{n}}
+        </div>
 
-</div>
-  </body>
+    </div>
+    <div id="footer" class="marquee" data-marquee="Tiny text"></div>
+</body>
 
 
 </html>

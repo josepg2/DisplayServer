@@ -22,6 +22,7 @@
   "dependencies": {
     "angular": "^1.6.3",
     "angular-animate": "^1.6.3",
+    "html5-marquee": "^0.2.0",
     "jquery": "^3.2.1",
     "omx-manager": "^0.1.4"
   }
