@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resolution Test</title>
+    <style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+body {
+  max-width: 1920px;
+  min-width: 1920px;
+}
+
+.main {
+  background-color: pink;
+  width: 1320px;
+  height: 990px;
+  float: left;
+}
+
+.ImageAds1{
+  background-color: blue;
+  width: 600px;
+  height: 330px;
+  float: left;
+}
+
+.right2{
+  background-color: yellow;
+  width: 600px;
+  height: 330px;
+  float: left;
+}
+
+.right3{
+  background-color: green;
+  width: 600px;
+  height: 330px;
+  float: left;
+}
+
+.bottom{
+  height: 90px;
+  width: 1920px;
+  background-color: white;
+  float:left;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+    </style>
+    <script type="text/javascript" src="js/sliderman.1.3.8.js"></script>
+  </head>
+  <body>
+<div class="main">
+
+
+
+</div>
+<div id="ImageAds1" class="ImageAds1">
+  <img src="img/1.jpg" alt="Demo2 first" title="Demo2 first" usemap="#img1map" />
+  <img src="img/2.jpg" alt="Demo2 second" title="Demo2 second" />
+  <img src="img/3.jpg" alt="Demo2 third" title="Demo2 third" />
+  <img src="img/4.jpg" alt="Demo2 fourth" title="Demo2 fourth" />
+</div>
+<div class="right2">
+
+</div>
+
+<div class="right3">
+
+</div>
+
+<div class="bottom">
+
+</div>
+
+  </body>
+  <script type="text/javascript">
+    effectsDemo2 = 'fade';
+    var demoSlider_2 = Sliderman.slider({container: 'ImageAds1', width: 600, height: 330, effects: effectsDemo2,
+      display: {
+        autoplay: 5000,
+        loading: {background: '#000000', opacity: 0.5, image: 'img/loading.gif'},
+        buttons: {hide: true, opacity: 1, prev: {className: 'ImageAds1', label: ''}, next: {className: 'ImageAds1', label: ''}},
+        description: {hide: true, background: '#000000', opacity: 0.4, height: 50, position: 'bottom'}
+      }
+    });
+  </script>
+</html>

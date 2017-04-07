@@ -1,0 +1,95 @@
+## angular
+
+function Ctrl($scope) {
+    $scope.data = [
+    new String('Item 4'), new String('Item 3'), new String('Item 2'), new String('Item 1')];
+
+    $scope.addItem = function () {
+        var c = $scope.data.length + 1;
+        var item = new String('Item ' + c)
+        $scope.data.splice(0, 0, item);
+    };
+}
+
+
+##CSS
+input{
+    padding:5px;
+}
+
+/* Material style */
+.button {
+  border: none;
+  cursor: pointer;
+  color: black;
+  padding: 15px 40px;
+  border-radius: 2px;
+  font-size: 22px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+  background: #3BCCDC;
+}
+
+/* Ripple magic */
+.button{
+  height : 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 0%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  8% {
+    transform: scale(400, 400);
+    opacity: .5;
+  }
+  20% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(400, 400);
+    opacity: .5;
+  }
+  65% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(400, 400);
+    opacity: 0;
+  }
+}
+
+.button::after {
+  animation: ripple 10s ease-out;
+}
+
+
+
+<div ng-controller="Ctrl">
+    <pre>{{data}}</pre><br/><br/>
+    <div class="button" ng-repeat="n in data">
+    {{n}}
+    </div>
+    <input type="button" ng-click="addItem()" value="Add Item" /><br/>
+    <i>Should add the item to the first index or 0 index.</i>
+</div>
+## HTML
+
